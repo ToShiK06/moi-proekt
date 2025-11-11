@@ -6,7 +6,7 @@ const Maih = () => {
     <div className={s.main}>
       <div className={s.box}>
        <div className={s.containerForText}>
-        <p>Халоу мабой!</p>
+        <p>Приветствуем!</p>
          <p>Лучшие образования</p>
           <p>на Korochki.Net</p>
            <a href='#catal' style={{width:'350px'}} className={s.zapis}>записаться</a>
