@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.info{
+    width: 100%;
+    height: 1000px;
+    
+    
+}
+.ramkaBox{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    
+}
+.ramka{
+     width: 1200px;
+    height: 700px;
+    background-image: url(../img/ramka.png);
+    background-repeat: no-repeat;
+}
+.glavn{
+     width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text{
+    width: 100%;
+    height: 100%;
+    font-size: 80px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

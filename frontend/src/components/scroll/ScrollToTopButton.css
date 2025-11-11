@@ -1,0 +1,31 @@
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    color: #ffffff;
+    background-color:#000000;
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    
+}
+
+.scroll-to-top:hover {
+    background-color: white;
+    box-shadow:0 15px 15px rgba(0, 0, 0, 0.333);
+    color:rgb(0, 0, 0);
+    transition: 0.3s;
+    cursor: pointer;
+    border-color: #000000;
+}
+.scroll-to-top:active{
+    transform: scale(0.95);
+}
+
+.scroll-to-top.visible {
+    display: block;
+    transform: scale(0.95); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}

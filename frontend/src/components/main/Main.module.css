@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main{
+    width: 100%;
+    height: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerForText{
+    width: 40%;
+    height: 70%;
+    padding-top: 12%;
+    text-align: center;
+    padding-right: 5%;
+    font-size: 86px;
+    font-weight: 600;
+}
+.zapis{
+    position: absolute;
+    border-color: black;
+    color:rgb(255, 255, 255);
+    width: 25%;
+    height: 7%;
+    margin-left: 9%;
+    margin-top: 1%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    background-color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+ 
+}
+.zapis:hover{
+    background-color: rgb(218, 218, 218);
+    color: black;
+}
+.zapis:active {
+  transform: scale(0.95);
+}
+.containerForPic{
+    width: 40%;
+    height: 70%;
+    background-image: url(../img/foto.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

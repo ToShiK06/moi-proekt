@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main{
+    width: 100%;
+    height: 1080px;
+    
+}
+.box{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.boxText{
+    width: 30%;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    text-align: start;
+    font-size: 40px;
+    margin-top: 5%;
+    
+}
+.name{
+    font-size: 96px;
+    font-weight: 600;
+     display: flex;
+    justify-content: center;
+}
+.map{
+    width: 40%;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5%;
+    font-size: 80px;
+}
+.contAdres{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.contNomer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 7%;
+}
+.contPochta{
+    width: 100%;
+    display: flex;
+    padding-top: 7%;
+    align-items: center;
+}
+.adres, .nomer, .pochta{
+    padding-left: 20px;
+}
+.logoAdres{
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-image: url(../img/Map.png);
+}
+.logoNomer{
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-image: url(../img/Phone.png);
+}
+.logoPochta{
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-image: url(../img/pocht.png);
+}

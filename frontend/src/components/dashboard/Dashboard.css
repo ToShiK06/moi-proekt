@@ -1,0 +1,271 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f5f5, #ffffff);
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dashboard-header {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  color: #000000;
+  font-size: 32px;
+  margin: 0 0 10px;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-header p {
+  color: #444444;
+  font-size: 18px;
+  margin: 0;
+}
+
+.dashboard-content {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+}
+
+.dashboard-content h2 {
+  color: #000000;
+  font-size: 24px;
+  margin: 0 0 20px;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+}
+
+.dashboard-content h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #000000;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.info-list li {
+  padding: 15px 0;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.info-list li:hover {
+  background-color: #fafafa;
+}
+
+.info-label {
+  font-weight: bold;
+  color: #000000;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+}
+
+.info-value {
+  color: #000000;
+  flex-grow: 1;
+  text-align: right;
+  font-size: 16px;
+}
+
+.edit-input {
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  width: 180px;
+  transition: border 0.2s ease;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.edit-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.edit-btn:hover {
+  transform: translateY(-1px);
+}
+
+.save-btn {
+  background: #000000;
+  color: #ffffff;
+}
+
+.save-btn:hover {
+  background: #222222;
+}
+
+.cancel-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #cccccc;
+}
+
+.cancel-btn:hover {
+  background: #f0f0f0;
+}
+
+.dashboard-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.action-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 180px;
+  text-align: center;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.home-btn {
+  background: #000000;
+  color: #ffffff;
+}
+
+.home-btn:hover {
+  background: #222222;
+}
+
+.logout-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.logout-btn:hover {
+  background: #f0f0f0;
+  color: #000000;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  .dashboard-header,
+  .dashboard-content {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .info-label {
+    min-width: 100px;
+    font-size: 15px;
+  }
+
+  .info-value {
+    font-size: 15px;
+  }
+
+  .edit-input {
+    width: 140px;
+    font-size: 13px;
+  }
+
+  .action-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 26px;
+  }
+
+  .info-list li {
+    padding: 12px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .info-label {
+    min-width: auto;
+    text-align: left;
+  }
+
+  .info-value {
+    text-align: left;
+    width: 100%;
+  }
+
+  .edit-input {
+    width: 100%;
+  }
+
+  .action-btn {
+    width: 100%;
+    min-width: auto;
+  }
+}
