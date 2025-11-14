@@ -51,24 +51,24 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-header">
+    <div className="dashboard-container fade-in">
+      <div className="dashboard-header fade-in-delay-1">
         <h1>👤 Личный кабинет</h1>
         <p>Добро пожаловать, <strong>{userData.email}</strong>!</p>
       </div>
 
-      <div className="dashboard-content">
+      <div className="dashboard-content fade-in-delay-2">
         <h2>📋 Личная информация</h2>
         <ul className="info-list">
-          <li>
+          <li className="fade-in-delay-1">
             <span className="info-label">✉️ Email:</span>
             <span className="info-value">{userData.email}</span>
           </li>
-          <li>
+          <li className="fade-in-delay-2">
             <span className="info-label">📱 Телефон:</span>
             <span className="info-value">{userData.phone}</span>
           </li>
-          <li>
+          <li className="fade-in-delay-3">
             <span className="info-label">👨‍💼 ФИО:</span>
             <span className="info-value">
               {isEditing ? (
@@ -93,7 +93,7 @@ const Dashboard = () => {
           </li>
         </ul>
 
-        <div className="dashboard-buttons">
+        <div className="dashboard-buttons fade-in-delay-4">
           <button onClick={handleGoHome} className="action-btn home-btn">
             🏠 Вернуться на главную
           </button>

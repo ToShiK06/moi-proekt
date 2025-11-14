@@ -1,35 +1,49 @@
-*{
+* {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
-.info{
+
+.info {
     width: 100%;
     height: 1000px;
-    
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
 }
-.ramkaBox{
+
+.ramkaBox {
     width: 100%;
     height: 700px;
     display: flex;
     justify-content: center;
     align-items: start;
-    
 }
-.ramka{
-     width: 1200px;
+
+.ramka {
+    width: 1200px;
     height: 700px;
     background-image: url(../img/ramka.png);
     background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Критично! */
 }
-.glavn{
-     width: 100%;
-    height: 100%;
+
+.glavn {
+    width: 85%; /* Ограничиваем ширину текстового блока */
+    height: 70%; /* Ограничиваем высоту */
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.text{
+
+.text {
     width: 100%;
     height: 100%;
     font-size: 80px;
@@ -39,4 +53,96 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: black;
+    line-height: 1.3;
+    word-break: break-word; /* Позволяет разбивать слова при необходимости */
+    overflow-wrap: break-word; /* Альтернатива для старых браузеров */
+}
+
+.text p:first-child {
+    font-size: 90px; /* Число крупнее */
+    margin-bottom: 10px;
+}
+
+.text p:nth-child(2) {
+    font-size: 40px;
+    margin: 5px 0;
+}
+
+.text p:last-child {
+    font-size: 40px;
+    margin-top: 5px;
+}
+
+/* Мобильные стили — уменьшаем размеры и контролируем переносы */
+@media (max-width: 768px) {
+    .info {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .ramkaBox {
+        height: auto;
+        padding: 20px;
+    }
+
+    .ramka {
+        width: 95%;
+        height: 400px;
+        background-size: contain;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .glavn {
+        width: 90%;
+        height: 80%;
+    }
+
+    .text {
+        font-size: 36px;
+        padding: 10px;
+        line-height: 1.4;
+    }
+
+    .text p:first-child {
+        font-size: 48px;
+        margin-bottom: 8px;
+    }
+
+    .text p:nth-child(2),
+    .text p:last-child {
+        font-size: 28px;
+        margin: 4px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .ramka {
+        height: 300px;
+    }
+
+    .glavn {
+        width: 95%;
+        height: 85%;
+    }
+
+    .text {
+        font-size: 28px;
+        padding: 5px;
+    }
+
+    .text p:first-child {
+        font-size: 36px;
+        margin-bottom: 5px;
+    }
+
+    .text p:nth-child(2),
+    .text p:last-child {
+        font-size: 24px;
+        margin: 3px 0;
+    }
 }

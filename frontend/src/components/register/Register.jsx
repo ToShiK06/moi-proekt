@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import PhoneInput from './PhoneImput';
+import PhoneInput from './PhoneInput';
 import './Register.css';
 
 const Register = () => {
@@ -29,8 +29,6 @@ const Register = () => {
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Пароли не совпадают';
     }
-
-    
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -73,9 +71,8 @@ const Register = () => {
     console.log('Отправляем данные:', {
      email: formData.email,
      password: formData.password,
-     phone: formData.phone, 
+     phone: formData.phone,
      });
-
 
     try {
       const res = await fetch('http://localhost:5000/auth/register', {
@@ -91,7 +88,6 @@ const Register = () => {
       const data = await res.json();
 
       if (res.ok) {
-        
         localStorage.setItem('phone', formData.phone);
         alert('Регистрация успешна! Войдите в систему.');
         navigate('/login');
@@ -105,11 +101,11 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <form className="register-form" onSubmit={handleSubmit}>
-        <h2>Регистрация</h2>
+    <div className="register-container fade-in">
+      <form className="register-form fade-in-delay-1" onSubmit={handleSubmit}>
+        <h2 className="fade-in-delay-1">Регистрация</h2>
 
-        <div className="form-group">
+        <div className="form-group fade-in-delay-2">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -122,17 +118,17 @@ const Register = () => {
           {errors.email && <p className="error-message">{errors.email}</p>}
         </div>
 
-        <div className="form-group">
+        <div className="form-group fade-in-delay-3">
           <label htmlFor="phone">Телефон</label>
           <PhoneInput
             value={formData.phone}
-           onChange={(value) => setFormData({ ...formData, phone: value })} 
+            onChange={(value) => setFormData({ ...formData, phone: value })}
             required
           />
           {errors.phone && <p className="error-message">{errors.phone}</p>}
         </div>
 
-        <div className="form-group">
+        <div className="form-group fade-in-delay-4">
           <label htmlFor="password">Пароль (минимум 6 символов)</label>
           <input
             type="password"
@@ -145,7 +141,7 @@ const Register = () => {
           {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
 
-        <div className="form-group">
+        <div className="form-group fade-in-delay-5">
           <label htmlFor="confirmPassword">Повторите пароль</label>
           <input
             type="password"
@@ -158,10 +154,14 @@ const Register = () => {
           {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
         </div>
 
-        <button type="submit" className="register-button">Зарегистрироваться</button>
+        <button type="submit" className="register-button fade-in-delay-6">Зарегистрироваться</button>
 
-        <p className="login-link">
+        <p className="login-link fade-in-delay-7" style={{
+          display:'flex',
+          flexDirection:'column'
+        }}>
           Уже есть аккаунт? <a href="/login">Войти</a>
+          <a href="/">Главная</a>
         </p>
       </form>
     </div>

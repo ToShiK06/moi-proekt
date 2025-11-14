@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box; 
 }
 
 .header {
@@ -17,7 +18,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center ;
+  justify-content: center;
 }
 
 .logo {
@@ -37,7 +38,7 @@
 .navButton {
   border-color: transparent;
   color: aliceblue;
-  width: 25%;
+  width: 25%; 
   height: 70%;
   margin-left: 20px;
   border-radius: 20px;
@@ -49,7 +50,7 @@
   background-color: black;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
-  box-shadow: 0.5px 0.5px 0.5px 0.5px ;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px;
 }
 
 .navButton:hover {
@@ -59,4 +60,49 @@
 
 .navButton:active {
   transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: auto; 
+    padding: 10px 0;
+  }
+
+  .contain {
+    flex-direction: column; 
+    height: auto;
+    gap: 10px;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center; 
+    font-size: 24px; 
+    margin-bottom: 10px;
+  }
+
+  .knopki {
+    width: 100%;
+    flex-direction: column; 
+    height: auto;
+    gap: 10px; 
+  }
+
+  .navButton {
+    width: 100%; 
+    height: 40px; 
+    font-size: 18px; 
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .navButton {
+    font-size: 16px;
+    height: 35px;
+  }
 }

@@ -1,7 +1,9 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box; 
 }
+
 .main{
     width: 100%;
     height: 1280px;
@@ -9,6 +11,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 .box{
     width: 80%;
     height: 100%;
@@ -16,6 +19,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .containerForText{
     width: 40%;
     height: 70%;
@@ -25,6 +29,7 @@
     font-size: 86px;
     font-weight: 600;
 }
+
 .zapis{
     position: absolute;
     border-color: black;
@@ -42,19 +47,75 @@
     background-color: black;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
- 
 }
+
 .zapis:hover{
     background-color: rgb(218, 218, 218);
     color: black;
 }
+
 .zapis:active {
   transform: scale(0.95);
 }
+
 .containerForPic{
     width: 40%;
     height: 70%;
     background-image: url(../img/foto.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+@media (max-width: 768px) {
+    .main {
+        height: auto; 
+        padding: 20px 0;
+    }
+
+    .box {
+        flex-direction: column; 
+        height: auto;
+        gap: 20px; 
+    }
+
+    .containerForText {
+        width: 90%; 
+        height: auto; 
+        padding-top: 10px;
+        padding-right: 0; 
+        font-size: 40px;
+    }
+
+    .zapis {
+        position: relative;
+        width: 80%; 
+        height: 50px;
+        margin: 20px auto 0; 
+        font-size: 20px;
+        left: 0; 
+    }
+
+    .containerForPic {
+        width: 90%;
+        height: 300px; 
+        background-position: center; 
+    }
+}
+
+@media (max-width: 480px) {
+    .containerForText {
+        font-size: 30px;
+    }
+
+    .zapis {
+        width: 90%;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .containerForPic {
+        width: 95%;
+        height: 250px;
+    }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 const PhoneInput = ({ value = '', onChange }) => {
   const handleChange = (event) => {
+    
     const input = event.target.value.replace(/\D/g, '');
     let formattedPhone = '';
 
@@ -21,15 +22,17 @@ const PhoneInput = ({ value = '', onChange }) => {
       formattedPhone += `${input.slice(9, 11)}`;
     }
 
-    
+  
     onChange(formattedPhone);
   };
 
   const handleFocus = (event) => {
+    
     event.target.value = value.replace(/\D/g, '');
   };
 
   const handleBlur = (event) => {
+   
     handleChange(event);
   };
 

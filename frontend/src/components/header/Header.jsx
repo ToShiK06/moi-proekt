@@ -15,15 +15,20 @@ const Header = () => {
   };
 
   return (
-    <div className={s.header}>
+    <div className={`${s.header} fade-in`} style={{ position: 'relative' }}>
       <div className={s.contain}>
-        <div className={s.logo}>Korochki.Net</div>
+        <div className={`logo fade-in-delay-1 ${s.logo}`}>
+          Korochki.Net
+        </div>
         <div className={s.knopki}>
-          <a href='#catal' className={s.navButton}>КАТАЛОГ</a>
-          <a href='#conta' className={s.navButton}>КОНТАКТЫ</a>
+          <a href='#catal' className={`${s.navButton} fade-in-delay-2`}>КАТАЛОГ</a>
+          <a href='#conta' className={`${s.navButton} fade-in-delay-2`}>КОНТАКТЫ</a>
           
           {token ? (
-            <button onClick={handleProfileClick} className={s.navButton}>
+            <button 
+              onClick={handleProfileClick} 
+              className={`${s.navButton} fade-in-delay-3`}
+            >
               ЛИЧНЫЙ КАБИНЕТ
             </button>
           ) : (

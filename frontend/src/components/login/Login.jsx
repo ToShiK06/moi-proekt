@@ -47,7 +47,6 @@ const Login = () => {
     if (!validate()) return;
 
     try {
-
       const res = await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -62,18 +61,16 @@ const Login = () => {
       if (res.ok) {
         const token = data.token;
 
-  
         const userRes = await fetch('http://localhost:5000/auth/me', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
         const userData = await userRes.json();
 
-     
         localStorage.setItem('token', token);
         localStorage.setItem('role', userData.role);
         localStorage.setItem('email', userData.email);
-        localStorage.setItem('phone', userData.phone || 'Не указан'); 
+        localStorage.setItem('phone', userData.phone || 'Не указан');
         console.log('Сохраняем телефон:', data.phone);
         localStorage.setItem('fullName', userData.fullName || '');
 
@@ -88,11 +85,11 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Вход</h2>
+    <div className="login-container fade-in">
+      <form className="login-form fade-in-delay-1" onSubmit={handleSubmit}>
+        <h2 className="fade-in-delay-1">Вход</h2>
 
-        <div className="form-group">
+        <div className="form-group fade-in-delay-2">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -105,7 +102,7 @@ const Login = () => {
           {errors.email && <p className="error-message">{errors.email}</p>}
         </div>
 
-        <div className="form-group">
+        <div className="form-group fade-in-delay-3">
           <label htmlFor="password">Пароль (минимум 6 символов)</label>
           <input
             type="password"
@@ -118,10 +115,14 @@ const Login = () => {
           {errors.password && <p className="error-message">{errors.password}</p>}
         </div>
 
-        <button type="submit" className="login-button">Войти</button>
+        <button type="submit" className="login-button fade-in-delay-4">Войти</button>
 
-        <p className="register-link">
+        <p className="register-link fade-in-delay-5" style={{
+          display:'flex',
+          flexDirection:'column'
+        }}>
           Нет аккаунта? <a href="/register">Зарегистрироваться</a>
+          <a href="/">Главная</a>
         </p>
       </form>
     </div>

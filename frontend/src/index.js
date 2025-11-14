@@ -5,10 +5,10 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Register from './components/register/Register';
 import Login from './components/login/Login';
-import AdminPanel from './components/AdminPanel';
+import AdminDashboardPage from './pages/AdminDashboardPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './components/dashboard/Dashboard';
-import Booking from './components/Booking';
+import Booking from './components/booking/Booking';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +16,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/booking" element={<Booking />} />
+       <Route path="/booking" element={<Booking />} />
+       <Route path="/admin-panel" element={<AdminDashboardPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={
@@ -24,11 +25,7 @@ root.render(
             <Dashboard />
           </ProtectedRoute>
         } />
-        <Route path="/admin" element={
-          <ProtectedRoute adminOnly={true}>
-            <AdminPanel />
-          </ProtectedRoute>
-        } />
+     
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,21 +1,20 @@
-import React from 'react'
-import s from "./Main.module.css"
+import React from 'react';
+import s from "./Main.module.css";
 
 const Maih = () => {
   return (
-    <div className={s.main}>
-      <div className={s.box}>
-       <div className={s.containerForText}>
-        <p>Приветствуем!</p>
-         <p>Лучшие образования</p>
-          <p>на Korochki.Net</p>
-           <a href='#catal' style={{width:'350px'}} className={s.zapis}>записаться</a>
-         </div>
-        <div className={s.containerForPic}></div>
+    <div className={`${s.main} fade-in`}>
+      <div className={`${s.box} fade-in-delay-1`}>
+        <div className={`${s.containerForText} fade-in-delay-2`}>
+          <p className="fade-in-delay-1">Халоу мабой!</p>
+          <p className="fade-in-delay-2">Лучшие образования</p>
+          <p className="fade-in-delay-3">на Korochki.Net</p>
+          <a href='#catal' style={{width:'350px'}} className={`fade-in-delay-4 ${s.zapis}`}>записаться</a>
+        </div>
+        <div className={`${s.containerForPic} fade-in-delay-5`}></div>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Maih
+export default Maih;

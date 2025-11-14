@@ -1,23 +1,28 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
+
 .catalog{
     width: 100%;
     height: 1280px;
     display: flex;
     justify-content: center;
 }
+
 .name{
     font-size: 96px;
     font-weight: 600;
      display: flex;
     justify-content: center;
 }
+
 .text{
     font-size: 48px;
     font-weight: 600;
 }
+
 .textBox{
     width: 100%;
     height: 250px;
@@ -26,21 +31,25 @@
     align-items: center;
     text-align: center;
 }
+
 .cards{
     width: 80%;
     height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 170%;
+    row-gap: 400px; 
     margin-top: 100px;
 }
+
 .cardTop1, .cardTop2{
-    width: 80%;
-    height: 40%;
+    width: 80%; 
+    height: 40%; 
     display: flex;
     justify-content: space-around;
+    gap: 20px;
 }
+
 .card1, .card2, .card3, .card4, .card5, .card6{
     width: 300px;
     height: 395px;
@@ -51,8 +60,8 @@
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
-   
 }
+
 .cardLogo1{
     width: 48px;
     height: 48px;
@@ -60,6 +69,7 @@
     background-image: url(../img/box.png);
     margin-top: 5px;
 }
+
 .cardLogo2{
     width: 48px;
     height: 48px;
@@ -67,6 +77,7 @@
     background-image: url(../img/magicpen.png);
     margin-top: 5px;
 }
+
 .cardLogo4{
     width: 48px;
     height: 48px;
@@ -74,6 +85,7 @@
     background-image: url(../img/az.png);
     margin-top: 5px;
 }
+
 .cardLogo3{
     width: 48px;
     height: 48px;
@@ -81,6 +93,7 @@
     background-image: url(../img/chart.png);
     margin-top: 5px;
 }
+
 .cardLogo5{
     width: 48px;
     height: 48px;
@@ -88,6 +101,7 @@
     background-image: url(../img/Vector.png);
     margin-top: 5px;
 }
+
 .cardLogo6{
     width: 48px;
     height: 48px;
@@ -95,24 +109,28 @@
     background-image: url(../img/smile.png);
     margin-top: 5px;
 }
+
 .cardName{
     width: 100%;
     height: 25px;
     font-size: 24px;
     font-weight: 600;
 }
+
 .cardSell{
     width: 100%;
     height: 40px;
     font-size: 34px;
     font-weight: 600;
 }
+
 .cardInfo{
     width: 90%;
     height: 170px;
     display: flex;
     flex-direction: column;
 }
+
 .cardBut{
     width: 235px;
     height: 40px;
@@ -123,29 +141,136 @@
     font-size: 20px;
     transition: background-color 0.3s ease, transform 0.1s ease;
 }
+
 .cardBut:hover{
     color: black;
      background-color: rgb(218, 218, 218);
 }
+
 .cardBut:active{
     transform: scale(0.95);
 }
+
 .info{
     display: flex;
     width: 275px;
     height: 55px;
     align-items: center;
 }
+
 .arrow{
     width: 45px;
     height: 45px;
     background-repeat: no-repeat;
     background-image: url(../img/Arrow.png);
 }
+
 .infoText{
     font-size: 15px;
     font-weight: 500;
     text-align: center;
- 
 }
 
+
+@media (max-width: 768px) {
+    .catalog {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .name {
+        font-size: 48px;
+    }
+
+    .text {
+        font-size: 28px;
+    }
+
+    .textBox {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .cards {
+        width: 95%;
+        height: auto;
+        margin-top: 30px;
+        row-gap: 40px;
+    }
+
+    .cardTop1, .cardTop2 {
+        width: 100%;
+        height: auto; 
+        flex-direction: column; 
+        align-items: center;
+        gap: 30px;
+    }
+
+    .card1, .card2, .card3, .card4, .card5, .card6 {
+        width: 90%; 
+        max-width: 320px; 
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .cardSell {
+        font-size: 28px;
+    }
+
+    .cardInfo {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .cardBut {
+        width: 90%;
+        max-width: 235px;
+        font-size: 18px;
+    }
+
+    .info {
+        width: 90%;
+        max-width: 275px;
+        justify-content: center;
+    }
+
+    .arrow {
+        width: 35px;
+        height: 35px;
+    }
+
+    .infoText {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .name {
+        font-size: 36px;
+    }
+
+    .text {
+        font-size: 24px;
+    }
+
+    .cards {
+        row-gap: 30px;
+    }
+
+    .card1, .card2, .card3, .card4, .card5, .card6 {
+        max-width: 280px;
+    }
+
+    .cardSell {
+        font-size: 24px;
+    }
+
+    .cardBut {
+        font-size: 16px;
+        height: 35px;
+    }
+
+    .infoText {
+        font-size: 12px;
+    }
+}

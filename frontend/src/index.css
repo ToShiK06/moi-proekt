@@ -1,4 +1,4 @@
-/* frontend/src/index.css */
+
 * {
   padding: 0;
   margin: 0;
@@ -13,7 +13,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Плавное появление всей страницы */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -29,7 +29,7 @@ body {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Задержка для элементов */
+
 .fade-in-delay-1 {
   animation-delay: 0.1s;
 }
@@ -42,7 +42,7 @@ body {
   animation-delay: 0.3s;
 }
 
-/* Кнопки с плавной анимацией */
+
 .navButton,
 .action-btn,
 .edit-btn,
@@ -70,7 +70,7 @@ body {
   transform: translateY(0) scale(0.97);
 }
 
-/* Тени при наведении */
+
 .card,
 .dashboard-container,
 .info-list li {

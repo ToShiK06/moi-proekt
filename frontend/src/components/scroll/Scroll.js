@@ -30,7 +30,6 @@ const ScrollToTopButton = () => {
         <button
             onClick={scrollToTop}
             className={`scroll-to-top ${isVisible ? 'visible' : ''}`}
-            style={{ display: isVisible ? 'block' : 'none' ,alignItems:'center',cursor:'pointer',transform:'scale(0.95)',fontWeight:'600', borderColor:'transparent', fontSize:'30px' }}
         >
             Вверх
         </button>
