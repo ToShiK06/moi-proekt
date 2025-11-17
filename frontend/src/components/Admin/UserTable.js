@@ -1,26 +1,19 @@
-// src/components/Admin/UserTable.js
 import React from 'react';
 import StatusSelector from './StatusSelector';
 import DeleteButton from './DeleteButton';
 import s from '../../styles/AdminDashboard.module.css';
 
+import { updateUserStatus, deleteUser as apiDeleteUser } from '../../services/adminApi';
+
 const UserTable = ({ users }) => {
   const handleStatusChange = async (userId, newStatus) => {
     try {
-      const response = await fetch(`/api/user/${userId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-        body: JSON.stringify({ course_status: newStatus }),
-      });
-
-      if (response.ok) {
-        alert('Статус обновлён');
-      }
+      await updateUserStatus(userId, newStatus); 
+      alert('Статус обновлён');
+      
     } catch (error) {
       console.error('Ошибка обновления статуса:', error);
+      alert(error.message || 'Ошибка обновления статуса');
     }
   };
 
@@ -28,19 +21,12 @@ const UserTable = ({ users }) => {
     if (!window.confirm('Вы уверены, что хотите удалить этого пользователя?')) return;
 
     try {
-      const response = await fetch(`/api/user/${userId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-      });
-
-      if (response.ok) {
-        alert('Пользователь удалён');
-        window.location.reload();
-      }
+      await apiDeleteUser(userId); 
+      alert('Пользователь удалён');
+      window.location.reload(); 
     } catch (error) {
       console.error('Ошибка удаления пользователя:', error);
+      alert(error.message || 'Ошибка удаления пользователя');
     }
   };
 

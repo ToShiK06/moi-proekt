@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
@@ -5,28 +6,30 @@ import './Dashboard.css';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
-    email: localStorage.getItem('email') || 'Пользователь',
-    phone: localStorage.getItem('phone') || 'Не указан',
-    fullName: localStorage.getItem('fullName') || '',
+    email: localStorage.getItem('email') || 'Пользователь', 
+    phone: localStorage.getItem('phone') || 'Не указан', 
+    fullName: localStorage.getItem('fullName') || '', 
   });
-  const [isEditing, setIsEditing] = useState(false);
   const [newFullName, setNewFullName] = useState(userData.fullName);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
+    const token = localStorage.getItem('token'); 
+    const role = localStorage.getItem('role'); 
+
+    if (!token || role !== 'user') {
       navigate('/login');
     }
   }, [navigate]);
 
-  console.log('Телефон из localStorage:', localStorage.getItem('phone'));
+  console.log('Телефон из localStorage:', localStorage.getItem('phone')); 
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    localStorage.removeItem('role'); 
     localStorage.removeItem('email');
     localStorage.removeItem('phone');
-    localStorage.removeItem('fullName');
+    localStorage.removeItem('fullName'); 
     navigate('/login');
   };
 
@@ -41,7 +44,7 @@ const Dashboard = () => {
 
   const handleSaveClick = () => {
     setUserData({ ...userData, fullName: newFullName });
-    localStorage.setItem('fullName', newFullName);
+    localStorage.setItem('fullName', newFullName); 
     setIsEditing(false);
   };
 

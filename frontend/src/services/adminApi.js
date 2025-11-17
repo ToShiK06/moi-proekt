@@ -1,18 +1,16 @@
-// src/services/adminApi.js
 
-const API_BASE_URL = '/api'; // Замените на ваш реальный URL API, если он отличается
+const API_BASE_URL = 'http://localhost:5000'; 
 
 const getAuthHeaders = () => ({
   'Content-Type': 'application/json',
-  'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  'Authorization': `Bearer ${localStorage.getItem('admin_token')}`, 
 });
 
 /**
- * Получить список пользователей
- * @returns {Promise<Array>} Массив пользователей
+ * @returns {Promise<Array>} 
  */
 export const fetchUsers = async () => {
-  const response = await fetch(`${API_BASE_URL}/users`, {
+  const response = await fetch(`${API_BASE_URL}/admin/users`, { 
     method: 'GET',
     headers: getAuthHeaders(),
   });
@@ -25,40 +23,39 @@ export const fetchUsers = async () => {
 };
 
 /**
- * Обновить статус пользователя
- * @param {number} userId - ID пользователя
- * @param {string} newStatus - Новый статус ('not_started', 'in_progress', 'completed')
- * @returns {Promise<Object>} Обновлённый пользователь
+ * @param {number} userId 
+ * @param {string} newStatus
+ * @returns {Promise<Object>} 
  */
 export const updateUserStatus = async (userId, newStatus) => {
-  const response = await fetch(`${API_BASE_URL}/user/${userId}`, {
+  const response = await fetch(`${API_BASE_URL}/admin/user/${userId}`, { 
     method: 'PUT',
     headers: getAuthHeaders(),
     body: JSON.stringify({ course_status: newStatus }),
   });
 
   if (!response.ok) {
-    throw new Error(`Ошибка обновления пользователя: ${response.status}`);
+    const errorData = await response.json();
+    throw new Error(errorData.message || `Ошибка обновления пользователя: ${response.status}`);
   }
 
   return response.json();
 };
 
 /**
- * Удалить пользователя
- * @param {number} userId - ID пользователя
+ * @param {number} userId 
  * @returns {Promise<void>}
  */
 export const deleteUser = async (userId) => {
-  const response = await fetch(`${API_BASE_URL}/user/${userId}`, {
+  const response = await fetch(`${API_BASE_URL}/admin/user/${userId}`, { 
     method: 'DELETE',
     headers: getAuthHeaders(),
   });
 
   if (!response.ok) {
-    throw new Error(`Ошибка удаления пользователя: ${response.status}`);
+    const errorData = await response.json();
+    throw new Error(errorData.message || `Ошибка удаления пользователя: ${response.status}`);
   }
 
-  // DELETE запросы обычно не возвращают тело
   return response;
 };

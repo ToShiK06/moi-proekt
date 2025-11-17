@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import s from '../styles/AdminDashboard.module.css';
 import AdminPanel from '../components/Admin/AdminPanel';
 
+import { fetchUsers } from '../services/adminApi';
+
 const AdminDashboardPage = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -11,33 +13,29 @@ const AdminDashboardPage = () => {
 
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role');
+    const token = localStorage.getItem('admin_token'); 
+    const role = localStorage.getItem('admin_role');   
 
     if (!token || role !== 'admin') {
-      navigate('/login'); 
+      navigate('/admin-login'); 
     }
   }, [navigate]);
 
-
+ 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const loadUsers = async () => {
       try {
-        const response = await fetch('/api/users', {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          },
-        });
-        const data = await response.json();
-        setUsers(data);
+        const userData = await fetchUsers();
+        setUsers(userData);
       } catch (error) {
         console.error('Ошибка загрузки пользователей:', error);
+       
       } finally {
         setLoading(false);
       }
     };
 
-    fetchUsers();
+    loadUsers();
   }, []);
 
   if (loading) {

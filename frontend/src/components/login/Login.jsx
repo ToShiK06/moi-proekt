@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -67,10 +68,10 @@ const Login = () => {
 
         const userData = await userRes.json();
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('role', userData.role);
-        localStorage.setItem('email', userData.email);
-        localStorage.setItem('phone', userData.phone || 'Не указан');
+        localStorage.setItem('token', token); 
+        localStorage.setItem('role', userData.role); 
+        localStorage.setItem('email', userData.email); 
+        localStorage.setItem('phone', userData.phone || 'Не указан'); 
         console.log('Сохраняем телефон:', data.phone);
         localStorage.setItem('fullName', userData.fullName || '');
 

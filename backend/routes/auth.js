@@ -1,12 +1,13 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/User'); 
+const { sendConfirmationEmail } = require('../utils/sendEmail'); 
 const router = express.Router();
 
 // Регистрация
 router.post('/register', async (req, res) => {
-  const { email, password, phone } = req.body; 
+  const { email, password, phone, fullName } = req.body; 
 
   const existingUser = await User.findOne({ where: { email } });
   if (existingUser) {
@@ -15,9 +16,36 @@ router.post('/register', async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await User.create({ email, password: hashedPassword, phone });
-    console.log('Создан пользователь с телефоном:', phone);
-    res.status(201).json({ message: 'Пользователь зарегистрирован' });
+
+    const user = await User.create({
+      email,
+      password: hashedPassword,
+      phone,
+      fullName, 
+      email_confirmed: 0, 
+    });
+
+    const confirmationToken = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    const confirmUrl = `http://localhost:3000/confirm-email?token=${confirmationToken}`;
+
+    
+    try {
+      await sendConfirmationEmail(email, confirmUrl);
+    } catch (err) {
+      console.error('Ошибка отправки письма:', err);
+      
+      await user.destroy();
+      return res.status(500).json({ error: 'Ошибка отправки письма подтверждения' });
+    }
+
+    res.status(201).json({
+      message: 'Регистрация успешна. Пожалуйста, проверьте почту для подтверждения.',
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -34,6 +62,11 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Неверный email или пароль' });
     }
 
+    //  Проверка: подтверждена ли почта?
+    if (user.email_confirmed !== 1) {
+      return res.status(400).json({ error: 'Почта не подтверждена. Проверьте вашу почту.' });
+    }
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ error: 'Неверный email или пароль' });
@@ -48,12 +81,14 @@ router.post('/login', async (req, res) => {
      role: user.role,
      email: user.email,
      phone: user.phone,
+     fullName: user.fullName, 
      });
-    res.json({ 
-      token, 
-      role: user.role, 
+    res.json({
+      token,
+      role: user.role,
       email: user.email,
-      phone: user.phone, 
+      phone: user.phone,
+      fullName: user.fullName,
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -70,11 +105,16 @@ router.get('/me', async (req, res) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findByPk(decoded.id, {
-      attributes: ['id', 'email', 'phone', 'fullName', 'role'],
+      attributes: ['id', 'email', 'phone', 'fullName', 'role', 'email_confirmed'],
     });
 
     if (!user) {
       return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+
+   
+    if (user.email_confirmed !== 1) {
+      return res.status(400).json({ error: 'Почта не подтверждена.' });
     }
 
     res.json({
@@ -83,9 +123,46 @@ router.get('/me', async (req, res) => {
       phone: user.phone,
       fullName: user.fullName,
       role: user.role,
+      email_confirmed: user.email_confirmed,
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+
+router.get('/confirm-email', async (req, res) => {
+  const { token } = req.query;
+
+  if (!token) {
+    return res.status(400).json({ message: 'Токен отсутствует' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = await User.findOne({ where: { id: decoded.id, email: decoded.email } });
+    if (!user) {
+      return res.status(404).json({ message: 'Пользователь не найден' });
+    }
+
+    if (user.email_confirmed === 1) {
+      return res.status(400).json({ message: 'Почта уже подтверждена' });
+    }
+
+    await user.update({ email_confirmed: 1 });
+
+    res.json({
+      message: 'Почта успешно подтверждена! Теперь вы можете войти в систему.',
+      user: { id: user.id, email: user.email },
+    });
+
+  } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      return res.status(400).json({ message: 'Срок действия ссылки истёк. Зарегистрируйтесь снова.' });
+    }
+    console.error('Ошибка подтверждения:', error);
+    res.status(500).json({ message: 'Ошибка подтверждения' });
   }
 });
 

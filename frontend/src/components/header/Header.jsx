@@ -4,13 +4,28 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  
+  
+  const token = localStorage.getItem('token'); 
+  const role = localStorage.getItem('role');
+
+  
+  const adminToken = localStorage.getItem('admin_token');
+  const adminRole = localStorage.getItem('admin_role');
 
   const handleProfileClick = () => {
-    if (token) {
+    if (token) { 
       navigate('/dashboard');
     } else {
       navigate('/login');
+    }
+  };
+
+  const handleAdminClick = () => {
+    if (adminToken && adminRole === 'admin') {
+      navigate('/admin-panel');
+    } else {
+      navigate('/admin-login');
     }
   };
 
@@ -24,7 +39,8 @@ const Header = () => {
           <a href='#catal' className={`${s.navButton} fade-in-delay-2`}>КАТАЛОГ</a>
           <a href='#conta' className={`${s.navButton} fade-in-delay-2`}>КОНТАКТЫ</a>
           
-          {token ? (
+        
+          {token ? ( 
             <button 
               onClick={handleProfileClick} 
               className={`${s.navButton} fade-in-delay-3`}
@@ -32,15 +48,20 @@ const Header = () => {
               ЛИЧНЫЙ КАБИНЕТ
             </button>
           ) : (
-            
-              <Link to="/login" className={s.navButton}>ВОЙТИ</Link>
-            
+            <Link to="/login" className={s.navButton}>ВОЙТИ</Link>
           )}
 
+          
+          <button 
+            onClick={handleAdminClick} 
+            className={`${s.navButton} fade-in-delay-3`}
+          >
+            {adminToken && adminRole === 'admin' ? 'АДМИН-ПАНЕЛЬ' : 'ВХОД АДМИН'}
+          </button>
+
+          
           {!token && (
-            <Link to="/register"className={s.navButton}>РЕГИСТРАЦИЯ </Link>
-         
-           
+            <Link to="/register" className={s.navButton}>РЕГИСТРАЦИЯ</Link>
           )}
         </div>
       </div>

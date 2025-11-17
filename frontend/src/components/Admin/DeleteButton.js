@@ -1,4 +1,4 @@
-// src/components/Admin/DeleteButton.js
+
 import React from 'react';
 import s from '../../styles/AdminDashboard.module.css';
 
