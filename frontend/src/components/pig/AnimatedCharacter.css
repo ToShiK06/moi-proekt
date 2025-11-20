@@ -1,0 +1,34 @@
+.character-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.moving-character {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  animation: moveAround 20s linear infinite;
+}
+
+@keyframes moveAround {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(calc(100vw - 50px), calc(100vh - 50px));
+  }
+  50% {
+    transform: translate(0, calc(100vh - 50px));
+  }
+  75% {
+    transform: translate(calc(100vw - 50px), 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

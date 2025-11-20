@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Неверный email или пароль' });
     }
 
-    //  Проверка: подтверждена ли почта?
+
     if (user.email_confirmed !== 1) {
       return res.status(400).json({ error: 'Почта не подтверждена. Проверьте вашу почту.' });
     }
@@ -95,7 +95,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Роут для получения данных пользователя (для ЛК)
+// Роут для получения данных пользователя 
 router.get('/me', async (req, res) => {
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');

@@ -1,9 +1,11 @@
 import React from 'react';
 import s from "./Main.module.css";
+import AnimatedCharacter from '../pig/AnimatedCharacter'
 
 const Maih = () => {
   return (
     <div className={`${s.main} fade-in`}>
+      <AnimatedCharacter/>
       <div className={`${s.box} fade-in-delay-1`}>
         <div className={`${s.containerForText} fade-in-delay-2`}>
           <p className="fade-in-delay-1">Халоу мабой!</p>
