@@ -4,14 +4,19 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  pointer-events: none;
   z-index: 9999;
 }
 
 .moving-character {
   position: absolute;
   width: 150px;
-  height: 150px;
+  height: auto;
   animation: moveAround 40s linear infinite;
+  pointer-events: auto;
+  cursor: pointer;
+  object-fit: contain;
+  object-position: center; 
 }
 
 @keyframes moveAround {
@@ -34,10 +39,10 @@
 
 @media (max-width: 768px) {
   .moving-character {
-    width: 100px;
-    height: 100px;
-    animation-duration: 15s; 
-  }
+  width: 100px;
+  height: auto;
+  animation-duration: 15s;
+}
 
   @keyframes moveAround {
     0% {
@@ -59,11 +64,11 @@
 }
 
 @media (max-width: 480px) {
-  .moving-character {
-    width: 75px;
-    height: 75px;
-    animation-duration: 12s; 
-  }
+ .moving-character {
+  width: 75px;
+  height: auto;
+  animation-duration: 12s;
+}
 
   @keyframes moveAround {
     0% {
@@ -82,4 +87,25 @@
       transform: translate(0, 0);
     }
   }
+}
+
+.screamer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.screamer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
