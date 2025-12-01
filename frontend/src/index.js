@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './components/dashboard/Dashboard';
 import Booking from './components/booking/Booking';
 import AdminLoginPage from './pages/AdminLoginPage';
+import ReviewsPage from './components/Rewiews/ReviewsPage';
 import ConfirmEmailPage from './pages/ConfirmEmailPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,7 @@ root.render(
        <Route path="/booking" element={<Booking />} />
        <Route path="/admin-panel" element={<AdminDashboardPage />} />
        <Route path="/admin-login" element={<AdminLoginPage />} />
+       <Route path="/rewiews" element={<ReviewsPage />} />
        <Route path="/confirm-email" element={<ConfirmEmailPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />

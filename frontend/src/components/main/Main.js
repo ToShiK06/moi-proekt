@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "./Main.module.css";
 import AnimatedCharacter from '../pig/AnimatedCharacter'
+import ImageSlider from '../ImageSlider';
 
 const Maih = () => {
   return (
@@ -13,7 +14,9 @@ const Maih = () => {
           <p className="fade-in-delay-3">на Korochki.Net</p>
           <a href='#catal' style={{width:'350px'}} className={`fade-in-delay-4 ${s.zapis}`}>записаться</a>
         </div>
-        <div className={`${s.containerForPic} fade-in-delay-5`}></div>
+        <div className={`${s.c} fade-in-delay-5`}>
+          <ImageSlider />
+        </div>
       </div>
     </div>
   );

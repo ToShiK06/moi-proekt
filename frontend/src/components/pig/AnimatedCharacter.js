@@ -1,39 +1,25 @@
 import React, { useState } from 'react';
 import './AnimatedCharacter.css';
 
-import pigImage from '../img/saha.jpeg'; 
+import pigImage1 from '../img/SahaRot.jpg';
+import pigImage2 from '../img/SahaRot2.jpg'; 
 
 function AnimatedCharacter() {
-  const [isExploded, setIsExploded] = useState(false);
+  const [currentImage, setCurrentImage] = useState(pigImage1); 
 
   const handlePigClick = () => {
-    setIsExploded(true);
-    
-  
-    setTimeout(() => {
-      setIsExploded(false);
-    }, 1500);
+    setCurrentImage(prev => (prev === pigImage1 ? pigImage2 : pigImage1));
   };
 
   return (
     <div className="character-container">
-      {!isExploded ? (
-     
-        <img 
-          src={pigImage} 
-          alt="свин" 
-          className="moving-character"
-          onClick={handlePigClick}
-          style={{ cursor: 'pointer' }}
-        />
-      ) : (
-        
-        <div className="explosion-animation">
-          <div className="explosion-circle"></div>
-          <div className="explosion-spark"></div>
-          <div className="explosion-text">💥 БУМ! 💥</div>
-        </div>
-      )}
+      <img
+        src={currentImage}
+        alt="свин"
+        className="moving-character"
+        onClick={handlePigClick}
+        style={{ cursor: 'pointer' }}
+      />
     </div>
   );
 }

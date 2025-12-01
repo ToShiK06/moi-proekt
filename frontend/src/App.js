@@ -6,6 +6,7 @@ import Contacts from './components/contacts/Contacts';
 import Scroll from "../src/components/scroll/Scroll";
 import Catalog from './components/catalog/Catalog';
 import Info from './components/info/info'
+import ReviewsPage from './components/Rewiews/ReviewsPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Info/>
       <Scroll />
       <Catalog/>
+      <ReviewsPage/>
       <Contacts/>
     </div>
   );

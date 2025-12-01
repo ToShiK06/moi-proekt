@@ -4,7 +4,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
   z-index: 9999;
 }
 
@@ -12,7 +11,7 @@
   position: absolute;
   width: 150px;
   height: 150px;
-  animation: moveAround 20s linear infinite;
+  animation: moveAround 40s linear infinite;
 }
 
 @keyframes moveAround {
@@ -33,12 +32,11 @@
   }
 }
 
-/* Mobile adaptation */
 @media (max-width: 768px) {
   .moving-character {
     width: 100px;
     height: 100px;
-    animation-duration: 15s; /* Slightly faster animation for smaller screens */
+    animation-duration: 15s; 
   }
 
   @keyframes moveAround {
@@ -64,7 +62,7 @@
   .moving-character {
     width: 75px;
     height: 75px;
-    animation-duration: 12s; /* Even faster for very small screens */
+    animation-duration: 12s; 
   }
 
   @keyframes moveAround {

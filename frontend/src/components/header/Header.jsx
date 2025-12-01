@@ -38,6 +38,7 @@ const Header = () => {
         <div className={s.knopki}>
           <a href='#catal' className={`${s.navButton} fade-in-delay-2`}>КАТАЛОГ</a>
           <a href='#conta' className={`${s.navButton} fade-in-delay-2`}>КОНТАКТЫ</a>
+          <a href="/reviews" className={`${s.navButton} fade-in-delay-2`}>ОТЗЫВЫ</a>
           
         
           {token ? ( 
@@ -65,7 +66,7 @@ const Header = () => {
           )}
         </div>
       </div>
-      <button id='conta' style={{position:"absolute", border:"none", backgroundColor:'transparent', marginTop:'6700px'}}></button>
+      <button id='conta' style={{position:"absolute", border:"none", backgroundColor:'transparent', marginTop:'8000px'}}></button>
       <button id='catal' style={{position:"absolute", border:"none", backgroundColor:'transparent', marginTop:'4600px'}}></button>
     </div>
   );

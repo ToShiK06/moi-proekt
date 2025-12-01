@@ -10,6 +10,7 @@ const Booking = () => {
     name: '',
     email: '',
     phone: '',
+    date: '', 
     comment: '',
   });
   const [errors, setErrors] = useState({});
@@ -46,6 +47,9 @@ const Booking = () => {
       }
     }
 
+    if (!formData.date) {
+      newErrors.date = 'Выберите дату';
+    }
 
     if (!formData.course) {
       newErrors.course = 'Выберите курс';
@@ -91,7 +95,8 @@ const Booking = () => {
 
     if (!validate()) return;
 
- 
+    console.log('Данные заявки:', formData);
+
     alert('Заявка успешно отправлена!');
     navigate('/');
   };
@@ -154,11 +159,25 @@ const Booking = () => {
                     <label htmlFor="phone">Телефон</label>
                     <PhoneInput
                       value={formData.phone}
-                      onChange={(value) => setFormData({ ...formData, phone: value })}
+                      onChange={handlePhoneChange} 
                       required
                     />
                     {errors.phone && <p className="error-message">{errors.phone}</p>}
                   </div>
+
+          <div className="form-group fade-in-delay-5">
+            <label htmlFor="date">Дата:</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              className={errors.date ? 'error' : ''}
+              required
+            />
+            {errors.date && <p className="error-message">{errors.date}</p>}
+          </div>
 
           <div className="form-group fade-in-delay-6">
             <label htmlFor="comment">Комментарий:</label>
